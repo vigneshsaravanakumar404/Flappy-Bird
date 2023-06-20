@@ -9,6 +9,8 @@ public class BaseMovement : MonoBehaviour
     {
         this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(-5.5f, 0);
         this.gameObject.GetComponent<Rigidbody2D>().gravityScale *= 0f;
+
+        
     }
 
     // Update is called once per frame
@@ -18,6 +20,9 @@ public class BaseMovement : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x + (2 * (12.0f - 0.1f)), transform.position.y, transform.position.z);
         }
+        this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(-5.5f, 0);
+
+
     }
 
 }

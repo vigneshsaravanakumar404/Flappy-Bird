@@ -12,9 +12,12 @@ public class Bird : MonoBehaviour
     public GameObject base1;
     public GameObject base2;
 
+    public GameObject pipe;
+
 
     List<GameObject> sprites = new List<GameObject>();
     int currentIndex = 0;
+    GameObject[] gameObjects = new GameObject[1000 * 2];
 
     void Start()
     {
@@ -22,6 +25,20 @@ public class Bird : MonoBehaviour
         sprites.Add(midFlap);
         sprites.Add (downFlap);
         StartCoroutine(IncrementIndexCoroutine());
+
+
+        int xdistance = 5;
+        float random;
+        for (int i = 0; i < 1000; i+=2)
+        {
+            random = Random.Range(-7.5f, -3f);
+            gameObjects[i] = Instantiate(pipe, new Vector3(10 + i * xdistance, random, -6.14f), Quaternion.identity);
+            gameObjects[i + 1] = Instantiate(pipe, new Vector3(20 + i * xdistance, random + 15, -6.14f), Quaternion.Euler(180, 0, 0));
+
+
+
+
+        }
 
     }
 
@@ -49,6 +66,7 @@ public class Bird : MonoBehaviour
 
             // Game Over
         }
+
     }
     private System.Collections.IEnumerator IncrementIndexCoroutine()
     {
